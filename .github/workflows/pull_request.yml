@@ -3,7 +3,7 @@ name: PR Build
 on:
   push:
     tags:
-      - '*
+      - '*'
 
 jobs:
   build-pr:
