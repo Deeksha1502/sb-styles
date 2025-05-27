@@ -1,9 +1,7 @@
 name: PR Build
 
 on:
-  push:
-    tags:
-      - '*'
+  pull_request:
 
 jobs:
   build-pr:
@@ -46,8 +44,8 @@ jobs:
         run: |
           npm pack 
 
-      # - name: Run lint
-      #   run: npm run lint
+      - name: Run lint
+        run: npm run lint
 
-      # - name: Run tests with coverage
-      #   run: npm run test
+      - name: Run tests
+        run: npm run test
