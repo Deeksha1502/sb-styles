@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "sass assets/styles.scss dist/styles.css"
   },
   "author": "",
   "license": "MIT",
@@ -21,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/Sunbird-Ed/sb-styles/issues"
   },
-  "homepage": "https://github.com/Sunbird-Ed/sb-styles.git#readme"
+  "homepage": "https://github.com/Sunbird-Ed/sb-styles.git#readme",
+  "devDependencies": {
+    "sass": "^1.89.0"
+  }
 }

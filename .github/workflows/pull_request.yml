@@ -1,7 +1,13 @@
 name: PR Build
 
 on:
-  pull_request:
+  push:
+    tags:
+      - '*'
+
+permissions:
+  actions: read
+  contents: read
 
 jobs:
   build-pr:
@@ -13,7 +19,7 @@ jobs:
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
-        with: 
+        with:
           node-version: '22.15'
 
       - name: Check installed versions
@@ -30,22 +36,20 @@ jobs:
             ${{ runner.os }}-node-modules-
 
       - name: Install dependencies
-        run: |
-          npm i 
+        run: npm i
+
+      - name: Create dist folder
+        run: mkdir -p dist
+
+      - name: Compile SCSS to CSS
+        run: npm run build-css
 
       - name: Save node_modules cache
         if: steps.cache.outputs.cache-hit != 'true'
         uses: actions/cache@v3
         with:
           path: node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}  
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
 
       - name: Build project and Pack (PR)
-        run: |
-          npm pack 
-
-      - name: Run lint
-        run: npm run lint
-
-      - name: Run tests
-        run: npm run test
+        run: npm pack
