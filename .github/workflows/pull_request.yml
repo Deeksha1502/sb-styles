@@ -60,5 +60,5 @@ jobs:
       - name: Build project and Pack (PR)
         run: npm pack
 
-       - name: Perform CodeQL Analysis
+      - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
