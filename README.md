@@ -43,11 +43,13 @@ When a PR is opened, the workflow:
 
 ## Release process
 
+### Prerequisite
+- Set the `NPM_TOKEN` secret in your GitHub repository settings
+
 When tags are pushed, the workflow automatically:
 
 1. Builds the package
-1. Set the `NPM_TOKEN` secret in your GitHub repository settings
-1. Published to NPM registry
+1. Publishes to NPM registry
 
 ## Link
 
